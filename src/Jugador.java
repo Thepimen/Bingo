@@ -20,8 +20,5 @@ public class Jugador {
             }
         }
         return ganaste;
-    }
-
-    
-    
+    }  
 }

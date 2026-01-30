@@ -1,38 +1,49 @@
-import java.util.HashMap;
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class Carton {
-    // La Clave es el número, el Valor es si está tachado true/false
-    private HashMap<Integer, Boolean> numeros;
+    private ArrayList<Integer> numeros;
 
     public Carton() {
-        numeros = new HashMap<>();
-        generarCarton();
-    }
-
-    private void generarCarton() {
-        Random r = new Random();
-        // Generamos 15 números sin repetir
-        while (numeros.size() < 15) {
-            int n = r.nextInt(90) + 1;
-            // Solo lo añade si no existe ya
-            if (!numeros.containsKey(n)) {
-                numeros.put(n, false); // false = no tachado
-            }
+        numeros = new ArrayList<>();
+        ArrayList<Integer> posibles = new ArrayList<>();
+        for (int i = 1; i <= 90; i++) posibles.add(i);
+        Collections.shuffle(posibles);
+        
+        // Creamos un cartón de 27 posiciones (3 filas x 9 columnas)
+        for (int i = 0; i < 27; i++) {
+            numeros.add(posibles.get(i));
         }
     }
 
     public void comprobar(int bola) {
-        if (numeros.containsKey(bola)) {
-            numeros.put(bola, true); // Lo tachamos
+        for (int i = 0; i < numeros.size(); i++) {
+            if (numeros.get(i) == bola) {
+                numeros.set(i, -1); // Tachamos con -1
+            }
         }
     }
 
     public boolean esBingo() {
-        // Si hay algún valor false, no es bingo
-        if (numeros.containsValue(false)) {
-            return false;
+        for (int n : numeros) {
+            if (n != -1) return false;
         }
         return true;
+    }
+
+    public void imprimirCarton() {
+        int contador = 0;
+        for (int fila = 0; fila < 3; fila++) {
+            for (int col = 0; col < 9; col++) {
+                int num = numeros.get(contador);
+                if (num == -1) {
+                    System.out.print("[XX] ");
+                } else {
+                    System.out.printf("[%2d] ", num);
+                }
+                contador++;
+            }
+            System.out.println();
+        }
     }
 }

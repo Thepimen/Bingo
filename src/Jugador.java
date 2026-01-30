@@ -7,19 +7,25 @@ public class Jugador {
     public Jugador(String nombre) {
         this.nombre = nombre;
         this.misCartones = new ArrayList<>();
-        // Le damos un cartón al crear al jugador
         misCartones.add(new Carton());
     }
 
     public boolean jugar(int bola) {
-        // Revisamos todos sus cartones
         for (Carton c : misCartones) {
             c.comprobar(bola);
             if (c.esBingo()) {
-                return true; // ¡Ha ganado!
+                return true;
             }
         }
         return false;
+    }
+
+    public void mostrarCartones() {
+        System.out.println("Cartones de " + nombre + ":");
+        for (Carton c : misCartones) {
+            c.imprimirCarton();
+        }
+        System.out.println();
     }
 
     public String getNombre() {

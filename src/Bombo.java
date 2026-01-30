@@ -2,24 +2,44 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Bombo {
-    private ArrayList<Integer> bolas; //Generar un arraylist que equivaldría a las bolas 
-                                      // dentro del bombo
-    public Bombo(){
+    private ArrayList<Integer> bolas;
+
+    public Bombo() {
         bolas = new ArrayList<>();
-        for(int i = 0; i < 90; i++){ //Rellenar el bombo con las bolas del 1 al 90 incluidos
+<<<<<<< HEAD
+        // Rellenamos del 1 al 90
+        for (int i = 1; i <= 90; i++) {
             bolas.add(i);
         }
-        Collections.shuffle(bolas); //Se barajan las bolas para que salgan aleatorias
-    } 
-
-    public int sacarbola(){
-        if(bolas.isEmpty()){
-            return -1;
+        // Las barajamos
+=======
+        // Metemos los 90 números
+        for (int i = 1; i <= 90; i++) {
+            bolas.add(i);
         }
-        return bolas.remove(0);
+        // Barajamos
+>>>>>>> 220bb520576f3b705c9ea7677f5294016dc7edf6
+        Collections.shuffle(bolas);
     }
 
-    public boolean quedanBolas(){
+    public int sacarBola() {
+<<<<<<< HEAD
+        // Si no hay bolas, devolvemos -1
+=======
+>>>>>>> 220bb520576f3b705c9ea7677f5294016dc7edf6
+        if (bolas.isEmpty()) {
+            return -1;
+        }
+        return bolas.remove(0); 
+    }
+<<<<<<< HEAD
+    
+    public boolean quedanBolas() {
+        // Devuelve true si la lista NO está vacía
+=======
+
+    public boolean quedanBolas() {
+>>>>>>> 220bb520576f3b705c9ea7677f5294016dc7edf6
         return !bolas.isEmpty();
     }
 }

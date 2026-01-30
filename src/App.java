@@ -2,30 +2,36 @@ import java.util.ArrayList;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        System.out.println("🎉 ¡BIENVENIDOS AL GRAN BINGO! 🎉");
+<<<<<<< HEAD
+        System.out.println("¡BIENVENIDOS AL GRAN BINGO!");
         System.out.println("----------------------------------");
+=======
+        
+        // Creamos los objetos necesarios
+        Bombo b = new Bombo();
+        ArrayList<Jugador> jugadores = new ArrayList<>();
+>>>>>>> 220bb520576f3b705c9ea7677f5294016dc7edf6
 
-        // 1. Preparamos el bombo
-        Bombo bombo = new Bombo();
+        // Añado unos cuantos jugadores
+        jugadores.add(new Jugador("Andres"));
+        jugadores.add(new Jugador("Fabio"));
+        jugadores.add(new Jugador("Noelia"));
+        jugadores.add(new Jugador("Luis"));
 
-        // 2. Registramos a los jugadores (usando ArrayList)
-        ArrayList<Jugador> listaJugadores = new ArrayList<>();
-        listaJugadores.add(new Jugador("María"));
-        listaJugadores.add(new Jugador("Pepe"));
-        listaJugadores.add(new Jugador("Lucía"));
+        boolean hayGanador = false;
 
-        // Variable para controlar el bucle
-        boolean tenemosGanador = false;
+        System.out.println("--- EMPIEZA EL BINGO ---");
 
-        // 3. Empieza el juego: Sacamos bolas mientras no haya ganador y queden bolas
-        while (!tenemosGanador && bombo.quedanBolas()) {
+        // Bucle principal
+        while (b.quedanBolas() && !hayGanador) {
             
-            // Pausa de medio segundo para dar emoción (500 milisegundos)
-            Thread.sleep(100); 
+            // Espero un poco para que no salga todo de golpe
+            Thread.sleep(150); 
 
+<<<<<<< HEAD
             // Sacamos bola
             int bola = bombo.sacarBola();
-            System.out.println("\n🎱 Ha salido el número: " + bola);
+            System.out.println("\nHa salido el número: " + bola);
 
             // Avisamos a todos los jugadores
             for (Jugador jugador : listaJugadores) {
@@ -33,16 +39,29 @@ public class App {
                 boolean haGanado = jugador.jugar(bola);
 
                 if (haGanado) {
-                    System.out.println("\n⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐");
-                    System.out.println(" ¡BINGO! ¡Ha ganado " + jugador.getNombre() + "! 🏆");
-                    System.out.println("⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐");
+                    System.out.println(" ¡BINGO! ¡Ha ganado " + jugador.getNombre() + "! ");
                     
                     tenemosGanador = true;
                     break; // Rompemos el for para dejar de avisar a otros
+=======
+            int num = b.sacarBola();
+            System.out.println("Ha salido el: " + num);
+
+            // Comprobar cartones de todos
+            for (Jugador j : jugadores) {
+                boolean exito = j.jugar(num);
+                
+                if (exito) {
+                    System.out.println("\n-----------------------------");
+                    System.out.println("BINGO!!! Ha ganado " + j.getNombre());
+                    System.out.println("-----------------------------\n");
+                    hayGanador = true;
+                    break; 
+>>>>>>> 220bb520576f3b705c9ea7677f5294016dc7edf6
                 }
             }
         }
 
-        System.out.println("\nFin del juego.");
+        System.out.println("Terminado.");
     }
 }

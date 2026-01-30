@@ -6,40 +6,25 @@ public class Bombo {
 
     public Bombo() {
         bolas = new ArrayList<>();
-<<<<<<< HEAD
-        // Rellenamos del 1 al 90
+        // Rellenamos el bombo con los números del 1 al 90
         for (int i = 1; i <= 90; i++) {
             bolas.add(i);
         }
-        // Las barajamos
-=======
-        // Metemos los 90 números
-        for (int i = 1; i <= 90; i++) {
-            bolas.add(i);
-        }
-        // Barajamos
->>>>>>> 220bb520576f3b705c9ea7677f5294016dc7edf6
+        // Mezclamos las bolas para que el orden sea aleatorio
         Collections.shuffle(bolas);
     }
 
     public int sacarBola() {
-<<<<<<< HEAD
-        // Si no hay bolas, devolvemos -1
-=======
->>>>>>> 220bb520576f3b705c9ea7677f5294016dc7edf6
+        // Si no hay bolas, devolvemos -1 para evitar errores
         if (bolas.isEmpty()) {
             return -1;
         }
+        // Quitamos y devolvemos la primera bola de la lista
         return bolas.remove(0); 
     }
-<<<<<<< HEAD
-    
-    public boolean quedanBolas() {
-        // Devuelve true si la lista NO está vacía
-=======
 
     public boolean quedanBolas() {
->>>>>>> 220bb520576f3b705c9ea7677f5294016dc7edf6
+        // Devuelve true si la lista NO está vacía
         return !bolas.isEmpty();
     }
 }

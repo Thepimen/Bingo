@@ -40,7 +40,7 @@ public class App {
             }
         }
 
-        // 2. Mostrar estado final (tachados)
+        // Mostrar estado final (tachados)
         System.out.println("--- ESTADO FINAL DE LOS CARTONES ---");
         for (Jugador j : jugadores) {
             j.mostrarCartones();
